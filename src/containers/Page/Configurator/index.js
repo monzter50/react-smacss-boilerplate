@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AboutView extends Component {
+class ConfiguratorView extends Component {
   render() {
     return (
       <div className="App">
@@ -22,4 +22,4 @@ class AboutView extends Component {
   }
 }
 
-export default AboutView;
+export default ConfiguratorView;

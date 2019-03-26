@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import AboutView from './containers/Page/Configurator'
-import HomeView from './containers/Page/Testimonial'
+import ConfiguratorView from './containers/Page/Configurator'
+import TestimonialView from './containers/Page/Testimonial'
 // import { ConnectedRouter } from "react-router-redux";
 import { connect } from "react-redux";
 import asyncComponent from "./helpers/AsyncFunc";
@@ -30,12 +30,12 @@ const PublicRoutes = () => {
         <Route
           exact
           path={"/Configurator"}
-          component={HomeView}
+          component={asyncComponent(() => import("./containers/Page/Configurator"))}
         />
         <Route
           exact
-          path={"/Testimonial"}
-          component={AboutView}
+          path={"/"}
+          component={asyncComponent(() => import("./containers/Page/Testimonial"))}
         />
         {/* <Route
           exact

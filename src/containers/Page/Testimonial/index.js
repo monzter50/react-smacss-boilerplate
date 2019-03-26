@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class HomeView extends Component {
+class TestimonialView extends Component {
   render() {
     return (
       <div className="App">
@@ -22,4 +22,4 @@ class HomeView extends Component {
   }
 }
 
-export default HomeView;
+export default TestimonialView;
