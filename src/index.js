@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {store} from "./redux/store";
+import { store, history } from "./redux/store";
 // import './index.css';
 import PublicRoutes from './routes';
 import './scss/styles.scss';
@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <Provider store={store}>
-        <PublicRoutes/>
+        <PublicRoutes />
     </Provider>
     , document.getElementById('root'));
 
