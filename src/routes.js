@@ -1,43 +1,49 @@
-import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import { ConnectedRouter } from "react-router-redux";
+import { connect } from "react-redux";
+import asyncComponent from "./helpers/AsyncFunc";
 
-import AppContainer from 'containers/App';
-import CreatePatient from 'containers/AddPatient';
-import PatientList from 'containers/PatientListContainer';
-import TokenManager from 'utils/TokenManager';
-import { history } from './store';
-
-const ProtectedRoute = ({ component: Component, ...rest }) => (
-    <Route
-        render={props =>
-            // TokenManager.get() ? (
-            true ? (
-                <AppContainer>
-                    <Component {...props} />
-                </AppContainer>
-            ) : (
-                <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
-            )
-        }
-        {...rest}
-    />
+const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      isLoggedIn ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: "/signin",
+            state: { from: props.location }
+          }}
+        />
+      )
+    }
+  />
 );
-
-export default () => (
-    <ConnectedRouter history={history}>
-        <Switch>
-            <Route path="/" exact component={require('containers/Welcome').default} />
-            <ProtectedRoute path="/addPatient" exact component={CreatePatient} />
-            <ProtectedRoute path="/client" exact component={PatientList} />
-            <Route path="*" component={require('containers/NotFound').default} />
-        </Switch>
+const PublicRoutes = () => {
+  return (
+    <ConnectedRouter >
+      <div>
+        <Route
+          exact
+          path={"/Configurator"}
+          component={asyncComponent(() => import("./containers/Page/Configurator"))}
+        />
+        <Route
+          exact
+          path={"/Testimonial"}
+          component={asyncComponent(() => import("./containers/Page/Testimonial"))}
+        />
+        {/* <Route
+          exact
+          path={"*"}
+          component={asyncComponent(() => import("./containers/Page/404"))}
+        /> */}
+     
+      </div>
     </ConnectedRouter>
-);
-
-ProtectedRoute.propTypes = {
-    component: PropTypes.func.isRequired,
-    rest: PropTypes.object,
-    location: PropTypes.object,
+  );
 };
+
+export default connect()(PublicRoutes);
