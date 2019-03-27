@@ -36,15 +36,7 @@
     --z-tooltip: 10;
     --z-fixed: 100;
     --z-modal: 1000;
-    // Space
-    --space-unit: 1em;
-    --space-xxs: calc(0.25 * var(--space-unit));
-    --space-xs: calc(0.5 * var(--space-unit));
-    --space-sm: calc(0.75 * var(--space-unit));
-    --space-md: calc(1.25 * var(--space-unit));
-    --space-lg: calc(2 * var(--space-unit));
-    --space-xl: calc(3.25 * var(--space-unit));
-    --space-xxl: calc(5.25 * var(--space-unit));
+ 
     /* components padding */
     --component-padding: var(--space-sm);
     /* fixed values - not affected by --space-unit or --text-base-size */
@@ -57,10 +49,6 @@
     --space-xl-fixed: calc(3.25 * var(--space-unit-fixed));
     --space-xxl-fixed: calc(5.25 * var(--space-unit-fixed));
 
-
-    --border-radius: .15rem;
-    --border-radius-m: calc(var(--border-radius) + 1.1);
-    --border-radius-l: calc(var(--border-radius-m) + 1.1);
     --all-transition: all .5s ease;
     --hover-transition: all 150ms ease;
     --input-transition: .2s ease-in-out;

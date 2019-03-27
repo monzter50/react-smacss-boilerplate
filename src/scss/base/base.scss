@@ -5,6 +5,29 @@
 }
 
 body {
-  margin : 0;
-  font-family : $font-family;
+	margin : 0;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	max-width: 1920px;
+	width: 100%;
+	margin: 0 auto;
+	font-family : var(--font-family);
+	padding: 0;
+	min-height: 100vh;
+	    position: relative;
+}
+
+footer{
+	margin-top: auto;
+}
+i{
+	font-size:1.5em;
+	margin:0 .3em;
+}
+a{
+	white-space: nowrap;
+}
+select{
+	outline: 0;
 }

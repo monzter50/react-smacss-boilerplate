@@ -1,16 +1,23 @@
 .layout-grid {
     display: grid;
     grid-template-columns: 1fr;
-     grid-template-rows: 1fr 100px;
+     grid-template-rows:100px 1fr;
      grid-template-areas: 
-     'main'
-     'footer';
+    'headerLayout'
+    'mainLayout';
     @include desktop{
-        grid-template-rows: 1fr 70px;
+        grid-template-rows: 1fr;
         grid-template-areas:
-        'main'
-        'footer';
+        'mainLayout'
     }
     
     min-height: 100vh;
+}
+
+.main{
+    grid-area: mainLayout;
+}
+
+.header{
+    grid-area: headerLayout;
 }
